@@ -4,9 +4,10 @@ const Film = (props) => {
   return (
     <div>
       <h3>{props.name}</h3>
-      <href>{props.url}"</href>
+      <a href="{props.url}">{props.url}</a>
+      <br/>
     </div>
-  )
+  );
 }
 
 export default Film;

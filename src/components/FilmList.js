@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import Film from './Film.js'
+import Film from './Film.js';
 
 const FilmList = (props) => {
   const filmNodes = props.data.map((film) => {

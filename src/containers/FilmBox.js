@@ -34,9 +34,10 @@ class FilmBox extends Component {
   }
 ]
     }
+    this.handleFilmSubmit = this.handleFilmSubmit.bind(this);
   }
 
-  handleCommentSubmit(newFilm){
+  handleFilmSubmit(newFilm){
     newFilm.id = Date.now;
     const updatedFilms = [...this.state.data, newFilm];
     this.setState({data: updatedFilms})
@@ -46,12 +47,12 @@ class FilmBox extends Component {
   render(){
     return (
       <div>
-        <FilmForm onCommentSubmit={this.handleCommentSubmit}/>
+        <FilmForm onFilmSubmit={this.handleFilmSubmit}/>
         <br />
         <FilmList data={this.state.data}/>
         <br />
         <hr />
-        <button href="https://www.imdb.com/calendar/?region=gb">View more releases</button>
+        <a href="https://www.imdb.com/calendar/?region=gb"><button>View more releases</button></a>
       </div>
     );
   }

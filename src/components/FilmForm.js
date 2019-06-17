@@ -7,13 +7,34 @@ class FilmForm extends Component {
       name: '',
       url: ''
     }
+    this.handleNameChange = this.handleNameChange.bind(this);
+    this.handleUrlChange = this.handleUrlChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  handleNameChange(event) {
+    this.setState({name: event.target.value})
+  }
+
+  handleUrlChange(event) {
+    this.setState({url: event.target.value})
+  }
+
+  handleSubmit(event) {
+    event.preventDefault();
+    if (!this.state.name.trim() || !this.state.name.trim()){
+      return;
+    }
+
+    this.props.onFilmSubmit(this.state)
+    this.setState({name: '', url: ''});
   }
 
   render(){
     return(
-      <form>
-        <input type="text" placeholder="Film title" value={this.state.name}/>
-        <input type="text" placeholder="Paste imdb link" value={this.state.url}/>
+      <form onSubmit={this.handleSubmit}>
+        <input type="text" placeholder="Film title" value={this.state.name} onChange={this.handleNameChange}/>
+        <input type="text" placeholder="Paste imdb link" value={this.state.url} onChange={this.handleUrlChange}/>
         <input type="submit" value="Add film"/>
       </form>
     );
