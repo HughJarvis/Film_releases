@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import FilmList from '../components/FilmList';
+import FilmForm from '../components/FilmForm';
 
 class FilmBox extends Component {
   constructor(props) {
@@ -35,10 +36,18 @@ class FilmBox extends Component {
     }
   }
 
+  handleCommentSubmit(newFilm){
+    newFilm.id = Date.now;
+    const updatedFilms = [...this.state.data, newFilm];
+    this.setState({data: updatedFilms})
+  }
+
 
   render(){
     return (
       <div>
+        <FilmForm onCommentSubmit={this.handleCommentSubmit}/>
+        <br />
         <FilmList data={this.state.data}/>
         <br />
         <hr />
